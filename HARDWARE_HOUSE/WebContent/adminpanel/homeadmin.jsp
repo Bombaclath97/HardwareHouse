@@ -21,7 +21,7 @@
 			<h1 class="display-4">Numeri di servizio</h1>
 			<p class="lead">Emanuele Bombardelli: 380 2882133</p>
 			<p class="lead">Gianluca Verlingieri: 338 5729345</p>
-			<p class="lead">E-mail di servizio: assistenza@hardwarehouse.it</p>
+			<p class="lead">E-mail di servizio: moccamamt@hardwarehouse.it</p>
 		</div>
 	</div>
 
