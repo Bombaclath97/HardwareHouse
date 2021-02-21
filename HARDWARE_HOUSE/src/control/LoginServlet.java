@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession(true);
-
+		
 		//L'utente è gia registrato
 		if(session.getAttribute("utente")!=null) {
 			request.setAttribute("alreadySignedIn", true);
