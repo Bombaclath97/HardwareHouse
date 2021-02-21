@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -95,9 +96,7 @@ public class LoginServlet extends HttpServlet {
 				default: 
 					break;
 				}
-				/*if(request.getParameterValues("ricorda") != null) {
-
-					}*/
+				response.addCookie(new Cookie("", ""));
 				response.setContentType("text/html");
 				response.sendRedirect((utente.getTipo() == "p" ? "home.jsp" : "adminpanel/homeadmin.jsp"));
 			}
