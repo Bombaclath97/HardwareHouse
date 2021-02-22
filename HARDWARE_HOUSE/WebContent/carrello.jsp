@@ -22,7 +22,7 @@
 				<div class="card mb-3" style="max-width: 700px;">
 					<div class="row no-gutters">
 						<div class="col-md-4">
-							<img src="assets/media/prodotti/<%=pb.getImg_path() %>.jpg"
+							<img src="assets/media/prodotti/<%=pb.getImg_path()%>.jpg"
 								class="card-img" alt="<%=pb.getNome()%>">
 						</div>
 						<div class="col-md-8">
@@ -30,8 +30,8 @@
 								<h5 class="card-title"><%=pb.getNome()%></h5>
 								<p class="card-text"><%=pb.getDescrizione()%></p>
 								<a href="mostra?articolo=<%=pb.getCodice()%>"
-									class="btn btn-primary">Vai al prodotto</a>
-								<a href="rimuovi?articolo=<%=pb.getCodice()%>"
+									class="btn btn-primary">Vai al prodotto</a> <a
+									href="rimuovi?articolo=<%=pb.getCodice()%>"
 									class="btn btn-primary">Rimuovi</a>
 							</div>
 						</div>
@@ -39,7 +39,7 @@
 				</div>
 				<%
 					}
-				double totale = 0d;
+					double totale = 0d;
 				%>
 			</div>
 
@@ -55,26 +55,35 @@
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
-							<h6 class="my-0"><%=pb.getNome() %></h6>
-						</div> <span class="text-muted">&euro;<%=pb.getPrezzo() %></span>
+							<h6 class="my-0"><%=pb.getNome()%></h6>
+						</div> <span class="text-muted">&euro;<%=pb.getPrezzo()%></span>
 					</li>
 					<%
-					totale += pb.getPrezzo();
+						totale += pb.getPrezzo();
 						}
 					%>
 					<li class="list-group-item d-flex justify-content-between"><span>Totale</span>
-						<strong>&euro;<%=totale %></strong></li>
+						<strong>&euro;<%=totale%></strong></li>
 				</ul>
-				<%if(!carrello.isEmpty()) {%>
-				<a href="completaAcquisto" class="btn btn-primary">Procedi all'acquisto</a>
-				<%} %>
+				<%
+					if (!carrello.isEmpty()) {
+				%>
+				<a href="completaAcquisto" class="btn btn-primary">Procedi
+					all'acquisto</a>
+				<%
+					}
+				%>
 			</div>
 		</div>
 	</div>
 
 
-
-	<%@ include file="footer.jsp"%>
+	<div class="footer" id="paginapiccola">
+		<p class="saluti">
+			Progetto di <br> Emanuele Bombardelli <br> Gianluca
+			Verlingieri <br>
+		</p>
+	</div>
 
 </body>
 </html>

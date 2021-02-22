@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home Admin</title>
+<title>Admin</title>
 <%@ include file="head.jsp"%>
 </head>
 <body>
@@ -14,6 +14,7 @@
 			href="homeadmin.jsp">Home</a></li>
 		<li class="nav-item"><a class="nav-link" href="clientiadmin.jsp">Clienti</a></li>
 		<li class="nav-item"><a class="nav-link" href="annunciadmin.jsp">Annunci</a></li>
+		<li class="nav-item"><a class="nav-link" href="annunciadmin.jsp">Acquisti</a></li>
 		<li class="nav-item"><a class="nav-link" href="../logout">Logout</a></li>
 	</ul>
 	<div class="container">

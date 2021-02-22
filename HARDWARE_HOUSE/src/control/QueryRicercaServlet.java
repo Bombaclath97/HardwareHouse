@@ -49,7 +49,7 @@ public class QueryRicercaServlet extends HttpServlet {
 		} else {
 			risultati = ProdottoDAO.getProdottiInVendita();
 		}
-		request.setAttribute("results", risultati);
+		request.getSession().setAttribute("results", risultati);
 		request.getRequestDispatcher("risultatiricerca.jsp").forward(request, response);
 	}
 
