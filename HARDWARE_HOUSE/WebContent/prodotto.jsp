@@ -57,8 +57,13 @@
 			</div>
 		</div>
 	</div>
-
-	<%@ include file="footer.jsp"%>
+	
+	<div class="footer" id="paginapiccola">
+		<p class="saluti">
+			Progetto di <br> Emanuele Bombardelli <br> Gianluca
+			Verlingieri <br>
+		</p>
+	</div>
 
 </body>
 </html>
