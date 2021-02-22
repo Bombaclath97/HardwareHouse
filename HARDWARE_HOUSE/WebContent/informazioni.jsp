@@ -54,6 +54,12 @@
 				class="btn btn-primary">Salva modifiche</button>
 		</form>
 	</div>
-	<%@ include file="footer.jsp"%>
+	
+	<div class="footer" id="paginapiccola">
+		<p class="saluti">
+			Progetto di <br> Emanuele Bombardelli <br> Gianluca
+			Verlingieri <br>
+		</p>
+	</div>
 </body>
 </html>
