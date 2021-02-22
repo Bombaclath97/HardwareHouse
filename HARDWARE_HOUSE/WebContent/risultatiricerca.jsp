@@ -5,6 +5,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <%@ include file="head.jsp"%>
+<script>
+$(document).ready(function(){
+	$('input[type=radio][name=flexRadioDefault]').change(function(){
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET", "filterresultsajax?category=" + this.value + "&q=" + <%=(String)request.getAttribute("q") %>, true);
+		document.getElementById("risultati").innerHTML = this.responseText;
+		xmlhttp.send();
+	})
+})
+</script>
 </head>
 <body>
 
@@ -20,39 +30,38 @@
 						for="flexRadioDefault6"> Tutte le categorie </label>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" value=""
+					<input class="form-check-input" type="radio" name="flexRadioDefault" value="CPU"
 						id="flexRadioDefault1"> <label class="form-check-label"
 						for="flexRadioDefault1"> CPU </label>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" value=""
+					<input class="form-check-input" type="radio" name="flexRadioDefault" value="Scheda Madre"
 						id="flexRadioDefault2"> <label class="form-check-label"
 						for="flexRadioDefault2"> Scheda madre </label>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" value=""
+					<input class="form-check-input" type="radio" name="flexRadioDefault" value="Scheda video"
 						id="flexRadioDefault3"> <label class="form-check-label"
 						for="flexRadioDefault3"> Scheda video </label>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" value=""
+					<input class="form-check-input" type="radio" name="flexRadioDefault" value="Alimentatore"
 						id="flexRadioDefault4"> <label class="form-check-label"
 						for="flexRadioDefault4"> Alimentatore </label>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" value=""
+					<input class="form-check-input" type="radio" name="flexRadioDefault" value="RAM"
 						id="flexRadioDefault5"> <label class="form-check-label"
 						for="flexRadioDefault5"> RAM </label>
 				</div>
 			</div>
-
 
 			<div class="col-8">
 				<%
 					List<ProdottoBean> risultati = (List<ProdottoBean>) request.getAttribute("results");
 				for (ProdottoBean pb : risultati) {
 				%>
-				<div class="card mb-3" style="max-width: 700px;">
+				<div id="resultlist" class="card mb-3" style="max-width: 700px;">
 					<div class="row no-gutters">
 						<div class="col-md-4">
 							<img src="assets/media/prodotti/<%=pb.getImg_path()%>.jpg"
