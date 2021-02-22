@@ -64,7 +64,7 @@
 				</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="vendi.jsp">Metti in vendita</a> <a
-							class="dropdown-item" href="preferiti.jsp">Lista preferiti</a> <a
+							class="dropdown-item" href="mostrapreferiti">Lista preferiti</a> <a
 							class="dropdown-item" href="informazioni.jsp">Cambia
 							informazioni</a>
 						<div class="dropdown-divider"></div>

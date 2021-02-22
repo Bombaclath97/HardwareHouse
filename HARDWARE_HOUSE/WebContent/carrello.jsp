@@ -17,6 +17,7 @@
 
 			<div class="col-8">
 				<%
+					if (!carrello.isEmpty()) {
 					for (ProdottoBean pb : carrello) {
 				%>
 				<div class="card mb-3" style="max-width: 700px;">
@@ -39,7 +40,10 @@
 				</div>
 				<%
 					}
-					double totale = 0d;
+				} else { %>
+				<h4>Il tuo carrello è attualmente vuoto</h4>
+				<%}
+				double totale = 0d;
 				%>
 			</div>
 
@@ -60,7 +64,7 @@
 					</li>
 					<%
 						totale += pb.getPrezzo();
-						}
+					}
 					%>
 					<li class="list-group-item d-flex justify-content-between"><span>Totale</span>
 						<strong>&euro;<%=totale%></strong></li>
