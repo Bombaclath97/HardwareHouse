@@ -9,8 +9,8 @@
 $(document).ready(function(){
 	$('input[type=radio][name=flexRadioDefault]').change(function(){
 		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET", "filterresultsajax?category=" + this.value + "&q=" + <%=(String)request.getAttribute("q") %>, true);
-		document.getElementById("risultati").innerHTML = this.responseText;
+		xmlhttp.open("GET", "filterresultsajax?category=" + this.value, true);
+		document.getElementById("resultlist").innerHTML = xmlhttp.response;
 		xmlhttp.send();
 	})
 })
@@ -25,7 +25,7 @@ $(document).ready(function(){
 			<div class="col-3">
 				<h5>Categoria</h5>
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" value=""
+					<input class="form-check-input" type="radio" name="flexRadioDefault" value="All"
 						id="flexRadioDefault6" checked> <label class="form-check-label"
 						for="flexRadioDefault6"> Tutte le categorie </label>
 				</div>
@@ -56,12 +56,12 @@ $(document).ready(function(){
 				</div>
 			</div>
 
-			<div class="col-8">
+			<div class="col-8" id="resultlist">
 				<%
-					List<ProdottoBean> risultati = (List<ProdottoBean>) request.getAttribute("results");
+					List<ProdottoBean> risultati = (List<ProdottoBean>) request.getSession().getAttribute("results");
 				for (ProdottoBean pb : risultati) {
 				%>
-				<div id="resultlist" class="card mb-3" style="max-width: 700px;">
+				<div class="card mb-3" style="max-width: 700px;">
 					<div class="row no-gutters">
 						<div class="col-md-4">
 							<img src="assets/media/prodotti/<%=pb.getImg_path()%>.jpg"

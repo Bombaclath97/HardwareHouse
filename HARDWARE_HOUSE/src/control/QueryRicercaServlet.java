@@ -36,7 +36,6 @@ public class QueryRicercaServlet extends HttpServlet {
 		List<ProdottoBean> risultati = new ArrayList<ProdottoBean>();
 		if(request.getParameter("query") != null) {
 			String query = request.getParameter("query");
-			request.setAttribute("q", query);
 			risultati = ProdottoDAO.getResultList(query);
 		} else if(request.getParameter("categoria") != null){
 			switch(request.getParameter("categoria")) {
@@ -47,12 +46,10 @@ public class QueryRicercaServlet extends HttpServlet {
 			default:
 				break;
 			}
-			request.setAttribute("q", null);
 		} else {
-			request.setAttribute("q", null);
 			risultati = ProdottoDAO.getProdottiInVendita();
 		}
-		request.setAttribute("results", risultati);
+		request.getSession().setAttribute("results", risultati);
 		request.getRequestDispatcher("risultatiricerca.jsp").forward(request, response);
 	}
 
