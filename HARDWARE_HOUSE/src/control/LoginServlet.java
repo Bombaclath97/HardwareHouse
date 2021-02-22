@@ -96,7 +96,6 @@ public class LoginServlet extends HttpServlet {
 				default: 
 					break;
 				}
-				response.addCookie(new Cookie("", ""));
 				response.setContentType("text/html");
 				response.sendRedirect((utente.getTipo() == "p" ? "home.jsp" : "adminpanel/homeadmin.jsp"));
 			}
