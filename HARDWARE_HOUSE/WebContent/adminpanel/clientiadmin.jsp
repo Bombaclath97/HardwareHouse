@@ -9,6 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<title>Clienti</title>
 <%@ include file="head.jsp"%>
 </head>
 <body>
@@ -18,6 +19,7 @@
 			href="homeadmin.jsp">Home</a></li>
 		<li class="nav-item"><a class="nav-link active" href="clientiadmin.jsp">Clienti</a></li>
 		<li class="nav-item"><a class="nav-link" href="annunciadmin.jsp">Annunci</a></li>
+		<li class="nav-item"><a class="nav-link" href="annunciadmin.jsp">Acquisti</a></li>
 		<li class="nav-item"><a class="nav-link" href="../logout">Logout</a></li>
 	</ul>
 	<%List<UtentePrivatoBean> listaUtenti = UtentePrivatoDAO.getAllUser(); %>
