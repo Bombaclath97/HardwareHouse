@@ -80,14 +80,14 @@
 				%>
 			</ul>
 			<form action="query" method="POST" class="form-inline my-2 my-lg-0">
-				<input id="searchBar" class="form-control mr-sm-2" name="query" type="search"
-					placeholder="Cerca qui.." aria-label="Search"
+				<input id="searchBar" class="form-control mr-sm-2" name="query"
+					type="search" placeholder="Cerca qui.." aria-label="Search"
 					onkeyup="showResult(this.value)">
-					<div id="risultati"></div>
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
 			</form>
 		</div>
 	</nav>
+	<div id="risultati"></div>
 
 
 
