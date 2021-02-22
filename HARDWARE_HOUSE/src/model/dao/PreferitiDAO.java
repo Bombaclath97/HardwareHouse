@@ -33,4 +33,18 @@ public class PreferitiDAO {
 		return toReturn;
 	}
 
+	public static void addToPreferiti(PreferitiBean preferitiBean) {
+		Connection con = null;
+		try {
+			con = DBConnection.getConnection();
+			String query = "INSERT INTO preferiti VALUES (?, ?);";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, preferitiBean.getEmail());
+			ps.setInt(2, preferitiBean.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

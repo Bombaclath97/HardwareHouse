@@ -5,27 +5,50 @@
 <html>
 <head>
 <%@ include file="head.jsp"%>
-<%if(request.getAttribute("venduto") != null && !request.getAttribute("venduto").equals("")) {%>
+<%
+	if (request.getAttribute("venduto") != null && !request.getAttribute("venduto").equals("")) {
+%>
 <script>
-$(document).ready(function(){
-    $("#modalVenduto").modal('show');
-}); 
+	$(document).ready(function() {
+		$("#modalVenduto").modal('show');
+	});
 </script>
-<%} %>
-<%if(request.getAttribute("alreadySignedIn") != null && !request.getAttribute("alreadySignedIn").equals("")) {%>
+<%
+	}
+%>
+<%
+	if (request.getAttribute("alreadySignedIn") != null && !request.getAttribute("alreadySignedIn").equals("")) {
+%>
 <script>
-$(document).ready(function(){
-    $("#modalLoggato").modal('show');
-}); 
+	$(document).ready(function() {
+		$("#modalLoggato").modal('show');
+	});
 </script>
-<%} %>
-<%if(request.getAttribute("acquisto") != null) {%>
+<%
+	}
+%>
+<%
+	if (request.getAttribute("acquisto") != null) {
+%>
 <script>
-$(document).ready(function(){
-    $("#modalAcquisto").modal('show');
-}); 
+	$(document).ready(function() {
+		$("#modalAcquisto").modal('show');
+	});
 </script>
-<%} %>
+<%
+	}
+%>
+<%
+	if (request.getAttribute("done") != null) {
+%>
+<script>
+	$(document).ready(function() {
+		$("#modalAggiunto").modal('show');
+	});
+</script>
+<%
+	}
+%>
 </head>
 <body>
 	<!-- modal Venduto -->
@@ -84,7 +107,8 @@ $(document).ready(function(){
 					</button>
 				</div>
 				<div class="modal-body">
-					<p>Hai completato il tuo acquisto, ti ringraziamo di aver comprato da Hardware House!</p>
+					<p>Hai completato il tuo acquisto, ti ringraziamo di aver
+						comprato da Hardware House!</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
@@ -93,7 +117,31 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-
+	<!-- modal Aggiunto -->
+	<div class="modal" id="modalAggiunto" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Prodotto aggiunto ai preferiti!</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Il prodotto è stato aggiunto alla tua lista preferiti! Puoi
+						visualizzare la tua lista preferiti cliccando il bottone qua
+						sotto!</p>
+				</div>
+				<div class="modal-footer">
+					<a href="mostrapreferiti" class="btn btn-primary">Mostra
+						preferiti</a>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Cancella</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<%@ include file="navbar.jsp"%>
 	<div id="carouselExampleIndicators" class="carousel slide"
 		data-ride="carousel">
@@ -130,7 +178,10 @@ $(document).ready(function(){
 
 	<blockquote class="blockquote text-center">
 		<p class="mb-0">SCHEDE VIDEO</p>
-		<footer class="blockquote-footer">Le migliori <cite title="Visualizza tutte le schede video"><a href="query?categoria=schedevideo"> schede video </a></cite></footer>
+		<footer class="blockquote-footer">
+			Le migliori <cite title="Visualizza tutte le schede video"><a
+				href="query?categoria=schedevideo"> schede video </a></cite>
+		</footer>
 	</blockquote>
 
 
@@ -148,7 +199,7 @@ $(document).ready(function(){
 					<div class="card-body">
 						<h5 class="card-title"><%=pb.getNome()%></h5>
 						<p class="card-text"><%=pb.getDescrizione()%></p>
-						<a href="mostra?articolo=<%=pb.getCodice() %>"
+						<a href="mostra?articolo=<%=pb.getCodice()%>"
 							class="btn btn-primary">Vai al prodotto</a>
 					</div>
 				</div>
@@ -161,7 +212,10 @@ $(document).ready(function(){
 
 	<blockquote class="blockquote text-center">
 		<p class="mb-0">PROCESSORI</p>
-		<footer class="blockquote-footer">I migliori <cite title="Visualizza tutte le schede video"><a href="query?categoria=processori">  processori </a></cite></footer>
+		<footer class="blockquote-footer">
+			I migliori <cite title="Visualizza tutte le schede video"><a
+				href="query?categoria=processori"> processori </a></cite>
+		</footer>
 	</blockquote>
 
 
@@ -181,7 +235,7 @@ $(document).ready(function(){
 						<h5 class="card-title"><%=pb.getNome()%></h5>
 						<p class="card-text"><%=pb.getDescrizione()%></p>
 						<!-- 60 caratteri -->
-						<a href="mostra?articolo=<%=pb.getCodice() %>"
+						<a href="mostra?articolo=<%=pb.getCodice()%>"
 							class="btn btn-primary">Vai al prodotto</a>
 					</div>
 				</div>
