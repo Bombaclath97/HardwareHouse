@@ -22,7 +22,7 @@
 						$('#risultati').show();
 					},
 					error : function(xhr, ajaxOptions, thrownError) {
-						alert(xr.responseText);
+						alert(xhr.responseText);
 					}
 				})
 			}
