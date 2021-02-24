@@ -49,6 +49,17 @@
 <%
 	}
 %>
+<%
+	if (request.getAttribute("alreadyInFav") != null) {
+%>
+<script>
+	$(document).ready(function() {
+		$("#modalInFavoriti").modal('show');
+	});
+</script>
+<%
+	}
+%>
 </head>
 <body>
 	<!-- modal Venduto -->
@@ -130,6 +141,31 @@
 				</div>
 				<div class="modal-body">
 					<p>Il prodotto è stato aggiunto alla tua lista preferiti! Puoi
+						visualizzare la tua lista preferiti cliccando il bottone qua
+						sotto!</p>
+				</div>
+				<div class="modal-footer">
+					<a href="mostrapreferiti" class="btn btn-primary">Mostra
+						preferiti</a>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Cancella</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal AlreadyInFav -->
+	<div class="modal" id="modalInFavoriti" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Prodotto già nella lista preferiti!</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Il prodotto è stato già aggiunto alla tua lista preferiti! Puoi
 						visualizzare la tua lista preferiti cliccando il bottone qua
 						sotto!</p>
 				</div>

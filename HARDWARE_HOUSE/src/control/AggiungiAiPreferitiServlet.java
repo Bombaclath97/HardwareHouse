@@ -1,6 +1,8 @@
 package control;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,9 +33,24 @@ public class AggiungiAiPreferitiServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int codice = Integer.parseInt(request.getParameter("p"));
-		User utente = (User) request.getSession().getAttribute("utente");
-		PreferitiDAO.addToPreferiti(new PreferitiBean(utente.getEmail(), codice));
-		request.setAttribute("done", true);
+		User utente = request.getSession().getAttribute("utente") != null ?  (User) request.getSession().getAttribute("utente") : null;
+		if(utente != null) {
+			List<PreferitiBean> preferiti = PreferitiDAO.getAllPreferitiOfUtente(utente.getEmail());
+			int i = 0;
+			for(PreferitiBean pb : preferiti) {
+				i++;
+				if(pb.getId() == codice) {
+					break;
+				}
+			}
+			if(i == preferiti.size() - 1) {
+				PreferitiDAO.addToPreferiti(new PreferitiBean(utente.getEmail(), codice));
+				request.setAttribute("done", true);
+			}
+			else {
+				request.setAttribute("alreadyInFav", true);
+			}
+		}
 		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 
