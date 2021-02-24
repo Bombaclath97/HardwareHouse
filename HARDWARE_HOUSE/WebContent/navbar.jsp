@@ -9,22 +9,25 @@
 <html>
 <head>
 <script>
-	function showResult(str) {
-		if (str.length == 0) {
-			document.getElementById("risultati").innerHTML = "";
-			document.getElementById("risultati").style.border = "0px";
-			return;
-		}
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("risultati").innerHTML = this.responseText;
-				document.getElementById("risultati").style.border = "1px solid #A5ACB2";
+	$(document).ready(function() {
+		$('#searchBar').keyup(function() {
+			if($(this).val().length === 0) {
+				$('#risultati').hide();
+			} else {
+				$.ajax({
+					type : "GET",
+					url : "ricercaajax?q=" + this.value,
+					success : function(response) {
+						$('#risultati').html(response);
+						$('#risultati').show();
+					},
+					error : function(xhr, ajaxOptions, thrownError) {
+						alert(xr.responseText);
+					}
+				})
 			}
-		}
-		xmlhttp.open("GET", "ricercaajax?q=" + str, true);
-		xmlhttp.send();
-	}
+		})
+	})
 </script>
 </head>
 <body>
@@ -50,9 +53,9 @@
 					href="stepper/componi.jsp">Componi il tuo PC</a></li>
 				<%
 					if (user != null) {
-						List<ProdottoBean> carrello = (List<ProdottoBean>) session.getAttribute("carrello");
-						UtentePrivatoBean up = UtentePrivatoDAO.getUtenteByEmail(user.getEmail());
-						String nomeUtente = "" + up.getNome() + " " + up.getCognome();
+					List<ProdottoBean> carrello = (List<ProdottoBean>) session.getAttribute("carrello");
+					UtentePrivatoBean up = UtentePrivatoDAO.getUtenteByEmail(user.getEmail());
+					String nomeUtente = "" + up.getNome() + " " + up.getCognome();
 				%>
 				<li class="nav-item"><a class="nav-link" href="carrello.jsp">Carrello
 						(<%=carrello.size()%>)
@@ -64,8 +67,8 @@
 				</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="vendi.jsp">Metti in vendita</a> <a
-							class="dropdown-item" href="mostrapreferiti">Lista preferiti</a> <a
-							class="dropdown-item" href="informazioni.jsp">Cambia
+							class="dropdown-item" href="mostrapreferiti">Lista preferiti</a>
+						<a class="dropdown-item" href="informazioni.jsp">Cambia
 							informazioni</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="logout">Logout</a>
@@ -81,8 +84,7 @@
 			</ul>
 			<form action="query" method="POST" class="form-inline my-2 my-lg-0">
 				<input id="searchBar" class="form-control mr-sm-2" name="query"
-					type="search" placeholder="Cerca qui.." aria-label="Search"
-					onkeyup="showResult(this.value)">
+					type="search" placeholder="Cerca qui.." aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
 			</form>
 		</div>

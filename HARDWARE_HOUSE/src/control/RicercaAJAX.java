@@ -34,8 +34,12 @@ public class RicercaAJAX extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter pw = response.getWriter();
 		List<ProdottoBean> results = ProdottoDAO.getResultList(request.getParameter("q"));
-		for(ProdottoBean result : results) {
-			pw.write("<div> <a href=\"mostra?articolo=" + result.getCodice() + "\"> " + result.getNome() + "</a> </div>");
+		if(!results.isEmpty()) {
+			pw.write("<ul>");
+			for(ProdottoBean result : results) {
+				pw.write("<li> <a href=\"mostra?articolo=" + result.getCodice() + "\"> " + result.getNome() + "</a> </li>");
+			}
+			pw.write("</ul>");
 		}
 	}
 
