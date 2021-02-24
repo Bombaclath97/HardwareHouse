@@ -193,12 +193,12 @@
 				ProdottoBean pb = schedeVideo.get(i);
 			%>
 			<div class="col-sm">
-				<div class="card" style="width: 18rem;">
+				<div class="card" id="carta">
 					<img src="assets/media/prodotti/<%=pb.getImg_path()%>.jpg"
 						class="card-img-top" alt="<%=pb.getImg_path()%>">
 					<div class="card-body">
 						<h5 class="card-title"><%=pb.getNome()%></h5>
-						<p class="card-text"><%=pb.getDescrizione()%></p>
+						<p class="card-text" id="descrizionecarta"><%=pb.getDescrizione()%></p>
 						<a href="mostra?articolo=<%=pb.getCodice()%>"
 							class="btn btn-primary">Vai al prodotto</a>
 					</div>
@@ -228,12 +228,12 @@
 				ProdottoBean pb = processori.get(i);
 			%>
 			<div class="col-sm">
-				<div class="card" style="width: 18rem;">
+				<div class="card" id="carta">
 					<img src="assets/media/prodotti/<%=pb.getImg_path()%>.jpg"
 						class="card-img-top" alt="<%=pb.getImg_path()%>">
 					<div class="card-body">
 						<h5 class="card-title"><%=pb.getNome()%></h5>
-						<p class="card-text"><%=pb.getDescrizione()%></p>
+						<p class="card-text" id="descrizionecarta"><%=pb.getDescrizione()%></p>
 						<!-- 60 caratteri -->
 						<a href="mostra?articolo=<%=pb.getCodice()%>"
 							class="btn btn-primary">Vai al prodotto</a>

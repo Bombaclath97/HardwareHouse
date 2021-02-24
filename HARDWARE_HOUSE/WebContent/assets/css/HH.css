@@ -5,6 +5,15 @@
 	margin-bottom: 2000px;
 }
 
+#carta {
+	width: 18rem;
+	height: 30rem;
+}
+
+#descrizionecarta{
+	height: 5rem;
+}
+
 /* SLIDER 3-55 */
 .slider-container {
 	width: 800px;
@@ -15,6 +24,7 @@
 	margin-top: 0px;
 	text-align: center;
 	overflow: hidden;
+	position: absolute;
 }
 
 .image-container {
@@ -27,6 +37,7 @@
 	-moz-transition: left 2s;
 	-o-transition: left 2s;
 	transition: left 2s;
+	position: absolute;
 }
 
 .button-container {
@@ -147,13 +158,20 @@
 	transition: all .1s ease-in-out;
 }
 
-#searchBar {
-	position: relative;
-}
 
 #risultati {
 	position: absolute 100;
 	background-color: white;
+	width: 300px;
+	margin-left: 80%;
+	/*
+	list-style: none;
+	padding: 0px;
+	width: 250px;
+	position: absolute;
+	margin: 0;
+	background-color: white;
+	*/
 }
 
 .form-label-group input::-webkit-input-placeholder {

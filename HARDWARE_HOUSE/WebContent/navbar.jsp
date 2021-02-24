@@ -33,7 +33,7 @@
 		User user = session.getAttribute("utente") != null ? (User) session.getAttribute("utente") : null;
 	%>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="home.jsp">HardwareHouse</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
@@ -46,8 +46,6 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link" href="home.jsp">Home</a>
 				</li>
-				<li class="nav-item"><a class="nav-link"
-					href="stepper/componi.jsp">Componi il tuo PC</a></li>
 				<%
 					if (user != null) {
 						List<ProdottoBean> carrello = (List<ProdottoBean>) session.getAttribute("carrello");
@@ -64,8 +62,8 @@
 				</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="vendi.jsp">Metti in vendita</a> <a
-							class="dropdown-item" href="mostrapreferiti">Lista preferiti</a> <a
-							class="dropdown-item" href="informazioni.jsp">Cambia
+							class="dropdown-item" href="mostrapreferiti">Lista preferiti</a>
+						<a class="dropdown-item" href="informazioni.jsp">Cambia
 							informazioni</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="logout">Logout</a>
@@ -88,7 +86,6 @@
 		</div>
 	</nav>
 	<div id="risultati"></div>
-
 
 
 </body>
