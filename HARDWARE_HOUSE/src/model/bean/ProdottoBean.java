@@ -3,7 +3,7 @@ package model.bean;
 public class ProdottoBean {
 
 	public ProdottoBean(int codice, String nome, String descrizione, String img_path, double prezzo, 
-			String categoria, String venditore) {
+			String categoria, String venditore, String moderatore, String acquirente) {
 		this.codice = codice;
 		this.nome = nome;
 		this.descrizione = descrizione;
@@ -11,6 +11,8 @@ public class ProdottoBean {
 		this.categoria = categoria;
 		this.venditore = venditore;
 		this.prezzo = prezzo;
+		this.setModeratore(moderatore);
+		this.setAcquirente(acquirente);
 	}
 	
 	public int getCodice() {
@@ -56,7 +58,23 @@ public class ProdottoBean {
 		this.prezzo = prezzo;
 	}
 
+	public String getModeratore() {
+		return moderatore;
+	}
+
+	public void setModeratore(String moderatore) {
+		this.moderatore = moderatore;
+	}
+
+	public String getAcquirente() {
+		return acquirente;
+	}
+
+	public void setAcquirente(String acquirente) {
+		this.acquirente = acquirente;
+	}
+
 	private int codice;
-	private String nome, descrizione, img_path, categoria, venditore;
+	private String nome, descrizione, img_path, categoria, venditore, moderatore, acquirente;
 	private double prezzo;
 }

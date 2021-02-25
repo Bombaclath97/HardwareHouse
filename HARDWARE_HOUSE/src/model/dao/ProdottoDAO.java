@@ -22,7 +22,7 @@ public class ProdottoDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				toReturn.add(new ProdottoBean(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), 
-						rs.getDouble(5), rs.getString(6), rs.getString(7)));
+						rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
 			}
 			return toReturn;
 		} catch (SQLException e) {
@@ -44,7 +44,7 @@ public class ProdottoDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				toReturn.add(new ProdottoBean(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), 
-						rs.getDouble(5), rs.getString(6), rs.getString(7)));
+						rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
 			}
 			return toReturn;
 		} catch (SQLException e) {
@@ -86,7 +86,8 @@ public class ProdottoDAO {
 			ps.setInt(1, codice);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				toReturn = new ProdottoBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7));
+				toReturn = new ProdottoBean(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), 
+						rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
 			}
 			return toReturn;
 		} catch (SQLException e) {
@@ -107,7 +108,7 @@ public class ProdottoDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				toReturn.add(new ProdottoBean(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), 
-						rs.getDouble(5), rs.getString(6), rs.getString(7)));
+						rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
 			}
 			return toReturn;
 		} catch (SQLException e) {
@@ -128,7 +129,7 @@ public class ProdottoDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				toReturn.add(new ProdottoBean(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), 
-						rs.getDouble(5), rs.getString(6), rs.getString(7)));
+						rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
 			}
 			return toReturn;
 		} catch (SQLException e) {
@@ -149,7 +150,7 @@ public class ProdottoDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				toReturn.add(new ProdottoBean(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), 
-						rs.getDouble(5), rs.getString(6), rs.getString(7)));
+						rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
 			}
 			return toReturn;
 		} catch (SQLException e) {
@@ -199,6 +200,57 @@ public class ProdottoDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, email);
 			ps.setInt(2, pb.getCodice());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnection.releaseConnection(con);
+		}
+	}
+	
+	public static List<ProdottoBean> getBoughtProducts() {
+		List<ProdottoBean> toReturn = new ArrayList<ProdottoBean>();
+		Connection con = null;
+		try {
+			con = DBConnection.getConnection();
+			String query = "SELECT * FROM prodotto WHERE email_moderatore IS NOT NULL AND email_acquirente IS NOT NULL;";
+			PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				toReturn.add(new ProdottoBean(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), 
+						rs.getDouble(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+			}
+			return toReturn;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnection.releaseConnection(con);
+		}
+		return toReturn;
+	}
+
+	public static void archiveOrder(int codice) {
+		Connection con = null;
+		try {
+			con = DBConnection.getConnection();
+			String query = "DELETE FROM prodotto WHERE codice = ?;";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, codice);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnection.releaseConnection(con);
+		}
+	}
+
+	public static void deleteOrder(int codice) {
+		Connection con = null;
+		try {
+			con = DBConnection.getConnection();
+			String query = "UPDATE prodotto SET email_acquirente = NULL WHERE codice = ?;";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, codice);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

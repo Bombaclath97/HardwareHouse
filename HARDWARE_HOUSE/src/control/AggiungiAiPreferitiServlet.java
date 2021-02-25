@@ -43,7 +43,7 @@ public class AggiungiAiPreferitiServlet extends HttpServlet {
 					break;
 				}
 			}
-			if(i == preferiti.size() - 1) {
+			if(i == preferiti.size() - 1 || preferiti.isEmpty()) {
 				PreferitiDAO.addToPreferiti(new PreferitiBean(utente.getEmail(), codice));
 				request.setAttribute("done", true);
 			}

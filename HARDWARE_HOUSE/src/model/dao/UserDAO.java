@@ -103,4 +103,21 @@ public class UserDAO {
 			DBConnection.releaseConnection(con);
 		}
 	}
+
+	public static void makeAdmin(UtentePrivatoBean up) {
+		Connection con = null;
+		UtentePrivatoDAO.deleteUtentePrivato(up.getEmail());
+		try {
+			con = DBConnection.getConnection();
+			String query = "UPDATE utente SET tipo=\"a\" WHERE email=?;";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, up.getEmail());
+			AmministratoreDAO.createAmministratore(up.getEmail());
+			ps.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnection.releaseConnection(con);
+		}
+	}
 }

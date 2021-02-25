@@ -13,7 +13,7 @@ import model.dao.ProdottoDAO;
 /**
  * Servlet implementation class ApproveProductServlet
  */
-@WebServlet("/approveProduct")
+@WebServlet("/adminpanel/approveProduct")
 public class ApproveProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,7 +32,7 @@ public class ApproveProductServlet extends HttpServlet {
 		int codice = Integer.parseInt(request.getParameter("p"));
 		User utente = (User) request.getSession().getAttribute("utente");
 		ProdottoDAO.approve(codice, utente.getEmail());
-		response.sendRedirect("adminpanel/annunciadmin.jsp");
+		response.sendRedirect("annunciadmin.jsp");
 	}
 
 	/**

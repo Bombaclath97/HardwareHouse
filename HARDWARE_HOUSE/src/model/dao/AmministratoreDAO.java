@@ -32,4 +32,19 @@ public class AmministratoreDAO {
 		return toReturn;
 	}
 
+	public static void createAmministratore(String email) {
+		Connection con = null;
+		try {
+			con = DBConnection.getConnection();
+			String query = "INSERT INTO amministratore VALUE(?);";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, email);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnection.releaseConnection(con);
+		}
+	}
+
 }

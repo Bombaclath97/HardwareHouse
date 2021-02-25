@@ -7,20 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.User;
-import model.dao.ProdottoDAO;
+import model.bean.UtentePrivatoBean;
+import model.dao.UtentePrivatoDAO;
 
 /**
- * Servlet implementation class RejectProductServlet
+ * Servlet implementation class BanServlet
  */
-@WebServlet("/adminpanel/rejectProduct")
-public class RejectProductServlet extends HttpServlet {
+@WebServlet("/adminpanel/ban")
+public class BanServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RejectProductServlet() {
+    public BanServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,9 +29,10 @@ public class RejectProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int codice = Integer.parseInt(request.getParameter("p"));
-		ProdottoDAO.reject(codice);
-		response.sendRedirect("annunciadmin.jsp");
+		UtentePrivatoBean up = UtentePrivatoDAO.getUtenteByEmail(request.getParameter("u"));
+		UtentePrivatoDAO.deleteUtentePrivato(up.getEmail());
+		request.setAttribute("done", true);
+		request.getRequestDispatcher("clientiadmin.jsp").forward(request, response);
 	}
 
 	/**

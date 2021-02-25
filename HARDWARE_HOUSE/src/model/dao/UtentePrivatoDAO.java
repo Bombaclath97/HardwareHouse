@@ -126,4 +126,19 @@ public class UtentePrivatoDAO {
 		}
 		return toReturn;
 	}
+
+	public static void deleteUtentePrivato(String email) {
+		Connection con = null;
+		try {
+			con = DBConnection.getConnection();
+			String query = "DELETE FROM privato WHERE email = ?;";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, email); 
+			ps.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnection.releaseConnection(con);
+		}
+	}
 }

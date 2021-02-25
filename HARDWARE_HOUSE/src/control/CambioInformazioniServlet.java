@@ -40,9 +40,12 @@ public class CambioInformazioniServlet extends HttpServlet {
 		User utente = (User) request.getSession().getAttribute("utente");
 		if(!password.equals("")) {
 			if(!password.equals(confermaPassword)) {
-				throw new IllegalArgumentException("Le password non coincidono");
+				request.setAttribute("errorePassword", true);
+				request.getRequestDispatcher("informazioni.js").forward(request, response);
+				return;
 			}
 			else {
+				request.setAttribute("done", true);
 				UserDAO.updatePassword(password, utente.getEmail());
 			}
 		}
@@ -50,7 +53,9 @@ public class CambioInformazioniServlet extends HttpServlet {
 			UtentePrivatoBean up = UtentePrivatoDAO.getUtenteByEmail(utente.getEmail());
 			up.setCompleanno(dataNascita);
 			request.getSession().setAttribute("utente", up);
+			request.setAttribute("done", true);
 		}
+		request.getRequestDispatcher("informazioni.jsp").forward(request, response);		
 	}
 
 	/**

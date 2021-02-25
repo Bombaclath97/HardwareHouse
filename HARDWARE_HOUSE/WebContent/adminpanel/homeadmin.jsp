@@ -1,3 +1,5 @@
+<%@page import="model.dao.AmministratoreDAO"%>
+<%@page import="model.bean.AmministratoreBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,7 +10,7 @@
 <%@ include file="head.jsp"%>
 </head>
 <body>
-
+	<%AmministratoreBean ab = (AmministratoreBean) request.getSession().getAttribute("utente"); %>
 	<ul class="nav nav-tabs">
 		<li class="nav-item"><a class="nav-link active"
 			href="homeadmin.jsp">Home</a></li>
@@ -19,7 +21,8 @@
 	</ul>
 	<div class="container">
 		<div class="jumbotron jumbotron-fluid">
-			<h1 class="display-4">Numeri di servizio</h1>
+			<h1 class="display-4">Benvenuto, <%=ab.getEmail() %></h1>
+			<h3 class="display-4">Numeri di servizio</h3>
 			<p class="lead">Emanuele Bombardelli: 380 2882133</p>
 			<p class="lead">Gianluca Verlingieri: 338 5729345</p>
 			<p class="lead">E-mail di servizio: assistenza@hardwarehouse.it</p>

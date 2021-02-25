@@ -7,20 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.User;
 import model.dao.ProdottoDAO;
 
 /**
- * Servlet implementation class RejectProductServlet
+ * Servlet implementation class ArchiviaOrdineServlet
  */
-@WebServlet("/adminpanel/rejectProduct")
-public class RejectProductServlet extends HttpServlet {
+@WebServlet("/adminpanel/archiveOrder")
+public class ArchiviaOrdineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RejectProductServlet() {
+    public ArchiviaOrdineServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,8 +29,9 @@ public class RejectProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int codice = Integer.parseInt(request.getParameter("p"));
-		ProdottoDAO.reject(codice);
-		response.sendRedirect("annunciadmin.jsp");
+		ProdottoDAO.archiveOrder(codice);
+		request.setAttribute("done", true);
+		request.getRequestDispatcher("acquistiadmin.jsp").forward(request, response);
 	}
 
 	/**
